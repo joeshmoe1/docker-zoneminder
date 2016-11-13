@@ -6,7 +6,7 @@ VOLUME ["/config"]
 
 EXPOSE 80
 
-RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
+RUN --ulimit nofile=1024:1024 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 apt-get update && \
 apt-get install -y \
 software-properties-common \
